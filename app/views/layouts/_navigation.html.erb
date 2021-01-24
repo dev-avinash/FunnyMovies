@@ -1,0 +1,14 @@
+<div class="nav">
+  <div class="brand"><%= link_to t('title'), root_path %></div>
+  <% if current_user %>
+    <div class="welcome-box">
+<!--       <div><%= t('user.welcome') %> <%= current_user.email %></div>
+      <div><%= link_to t('user.share'), share_path %></div>
+      <div><%= link_to t('user.log_out'), logout_path %></div> -->
+    </div>
+  <% else %>
+    <div class="login-form">
+      <p id='notice'><%= alert || notice %></p>
+    </div>
+  <% end %>
+</div>
