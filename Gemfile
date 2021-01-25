@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
@@ -27,11 +27,18 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
 gem 'devise'
-
 # Use to securely configuring environments
-gem "figaro"
+gem 'figaro'
+gem 'sidekiq'
+# Use for pagination
+gem 'kaminari'
+# Use to display thumb up and thumb down
+gem 'material_icons'
+# Use to fetch youtube details
+gem 'youtube_addy'
+# Use to fetch youtube details
+gem 'video_info'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

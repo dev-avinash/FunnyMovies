@@ -31,3 +31,34 @@
 
 en:
   hello: "Hello world"
+  title: 'Funny Movies'
+  session:
+    logged_in: 'Logged in!'
+    invalid_email_or_pwd: 'Email or password is invalid'
+    logged_out: 'Logged out!'
+    user_creation_error: 'Error while creating user, please try again, error: %{error}'
+    empty_required_fields: 'Email and Password are both are required'
+  youtube_video:
+    no_title: 'No Title'
+    no_description: 'No Description'
+    created: 'Youtube video record has been created successfully.'
+    share_video_label: 'Share a Youtube video:'
+    url_label: 'Youtube URL:'
+    share: 'Share'
+    not_found: 'Not found'
+    not_voted: '(un-voted)'
+    up_voted: '(voted up)'
+    down_voted: '(voted down)'
+  user:
+    welcome: 'Welcome'
+    log_in: 'Log In'
+    log_out: 'Log Out'
+    share: 'Share'
+    email: 'user@example.com'
+    password: 'password'
+    unauthorized: 'Not authorized'
+  page:
+    no_videos: 'No video shared yet :('
+    share_now: 'Share now!'
+    description: 'Description'
+    shared_by: 'Shared by:'

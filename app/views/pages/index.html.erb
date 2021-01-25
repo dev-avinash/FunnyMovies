@@ -1,1 +1,23 @@
-Page Index
+<% if current_user %>
+  <p id='notice'><%= alert || notice %></p>
+<% end %>
+
+<% if @yt_videos.blank? %>
+  <h3> <%= t('page.no_videos') %>, <%= link_to t('page.share_now'), share_path %></h3>
+<% else %>
+  <div class="video-list">
+    <% @yt_videos.each do |yt_video| %>
+      <div class="list-items">
+        <div class="video"><%= render partial: 'shared/video', locals: { url: yt_video.youtube_video_url } %></div>
+        <div class="video-details">
+          <h3><%= yt_video.title %></h3>
+          <small><%= t('page.shared_by')%> <%= yt_video.user.email %></small>
+          <p><%= t('page.description') %></p>
+          <%= yt_video.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= paginate @yt_videos %>
+<% end %>
