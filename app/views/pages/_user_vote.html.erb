@@ -1,0 +1,11 @@
+<div class="vote" id=<%= "video_#{yt_video.id}" %>>
+  <% vote = current_user.get_vote_by(yt_video.id) %>
+  <% if vote.nil? %>
+    <% ['up', 'down'].each do |icon_name| %>
+      <%= link_to material_icon.send("thumb_#{icon_name}").md_48, vote_path(youtube_video_id: yt_video.id, vote:icon_name), remote: true , method: :post %>
+    <% end %>
+  <% else %>
+    <%= link_to material_icon.send("thumb_#{vote.to_sym}").md_48, 'javascript:void(0);' %>
+  <% end %>
+  <p><strong><%= t("youtube_video.#{vote || 'not'}_voted") %></strong></p>
+</div>

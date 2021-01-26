@@ -1,0 +1,1 @@
+$('#<%= "video_#{@user_vote.youtube_video_id}" %>').html('<%= j render(partial: "user_vote", :locals => {:vote_icon => @vote_icon_name}) %>');

@@ -5,7 +5,6 @@ class ScrapeYoutubeVideoMetadataJob < ActiveJob::Base
     yt_video = YoutubeVideo.find_by(id: yt_video_id)
     return unless yt_video
 
-    byebug
     video_info = VideoInfo.new(yt_video.url)
     return unless video_info
 

@@ -12,6 +12,7 @@
         <div class="video-details">
           <h3><%= yt_video.title %></h3>
           <small><%= t('page.shared_by')%> <%= yt_video.user.email %></small>
+          <%= render 'pages/user_vote', yt_video: yt_video if current_user %>
           <p><%= t('page.description') %></p>
           <%= yt_video.description %>
         </div>

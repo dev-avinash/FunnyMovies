@@ -39,6 +39,7 @@ gem 'material_icons'
 gem 'youtube_addy'
 # Use to fetch youtube details
 gem 'video_info'
+gem 'active_interaction', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
