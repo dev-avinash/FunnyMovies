@@ -24,9 +24,17 @@ rails s
 ```bash
 sidekiq
 ```
+
+### Run everything using docker
+```bash
+docker-compose up
+```
+
 ## Features
 - Authentication by Device Gem
 - User can share youtube videos.
 - Once the video is saved scraper will scrape video details in backgroud.
 - User can cast up or down vote on each videos.
 - Linting **100% covered** with rubocop.
+- Complete test coverage
+- Dockerized application.

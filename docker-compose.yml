@@ -1,0 +1,85 @@
+version: "3"
+
+volumes:
+  redis-data:
+  postgres-data:
+
+services:
+  server:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    container_name: server
+    command: bundle exec puma -C config/puma.rb
+    environment:
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - sidekiq
+      - init-server
+
+  init-server:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    container_name: migrations
+    command: ["/bin/bash", "-c", "bundle exec rake db:migrate"]
+    environment:
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    depends_on:
+      - postgres
+      - sidekiq
+
+  sidekiq:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    command: bundle exec sidekiq
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://redis:6379
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: postgres
+    depends_on:
+      - postgres
+      - redis
+
+  redis:
+    image: redis:6.0
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    restart: always
+
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
