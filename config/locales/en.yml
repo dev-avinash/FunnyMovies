@@ -56,7 +56,7 @@ en:
     share: 'Share'
     email: 'user@example.com'
     password: 'password'
-    unauthorized: 'Not authorized'
+    unauthorized: 'You need to sign in or sign up before continuing.'
   page:
     no_videos: 'No video shared yet :('
     share_now: 'Share now!'
